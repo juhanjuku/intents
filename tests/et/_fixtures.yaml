@@ -15,3 +15,11 @@ entities:
   - name: "Elutoa lamp"
     id: "light.elutoa_lamp"
     area: "living_room"
+
+  - name: "Magamistoa seinalambid"
+    id: "light.lonsonho_dimmer_2_f0cf19fe_level_on_off"
+    area: "bedroom"
+
+  - name: "Magamistoa akna lamp"
+    id: "light.ikea_bulb_e14_light"
+    area: "bedroom"

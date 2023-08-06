@@ -7,7 +7,112 @@ responses:
     no_device_class: "{{ area }} ei sisalda {{ device_class }}"
     no_entity: "Puudub seade või üksus nimega {{ entity }}"
     handle_error: "Soovi töötlemisel tekkis tundmatu viga"
-lists: {}
-expansion_rules: {}
+lists:
+  color:
+    values:
+      - in: "valge|valge(ks|d)"
+        out: "white"
+      - in: "must|musta(ks|d)"
+        out: "black"
+      - in: "punane|punase(ks|d)"
+        out: "red"
+      - in: "oranž|oranži(ks|d)"
+        out: "orange"
+      - in: "kollane|kollase(ks|d)"
+        out: "yellow"
+      - in: "roheline|rohelise(ks|d)"
+        out: "green"
+      - in: "sinine|sinise(ks|d)"
+        out: "blue"
+      - in: "lilla|lilla(ks|d)"
+        out: "purple"
+      - in: "pruun|pruuni(ks|d)"
+        out: "brown"
+  brightness:
+    range:
+      type: "percentage"
+      from: 0
+      to: 100
+  temperature:
+    range:
+      type: "temperature"
+      from: 0
+      to: 100
+  temperature_unit:
+    values:
+      - "celsius"
+      - in: "c"
+        out: "celsius"
+      - "fahrenheit"
+      - in: "f"
+        out: "fahrenheit"
+  brightness_level:
+    values:
+      - in: "(max|maksi(mum|maalne))"
+        out: 100
+      - in: "(min|minim(um|aalne))"
+        out: 1
+  on_off_states:
+    values:
+      - in: "(sisse lülitatud|töötab)"
+        out: "on"
+      - in: "(välja lülitatud|seisab)"
+        out: "off"
+  on_off_domains:
+    values:
+      - in: "(<valgus>|<valot>|<valaistus>|<valaistukset>|valoa)"
+        out: "light"
+      - in: "(<tuuletin>|<tuulettimet>)"
+        out: "fan"
+      - in: "(<kytkin>|<kytkimet>|kytkimiä)"
+        out: "switch"
+  cover_states:
+    values:
+      - in: "(lahti|avatud)"
+        out: "open"
+      - in: "(kinni|suletud)"
+        out: "closed"
+      - in: "avaneb"
+        out: "opening"
+      - in: "sulgub"
+        out: "closing"
+  cover_classes:
+    values:
+      - in: "markiis[id]"
+        out: "awning"
+      - in: "ribikardin[ad]"
+        out: "blind"
+      - in: "kardin[ad]"
+        out: "curtain"
+      - in: "(uks|uksed)"
+        out: "door"
+      - in: "garaazi (uks|uksed)"
+        out: "garage"
+      - in: "(värav|väravad)"
+        out: "gate"
+      - in: "(vari|varjud)"
+        out: "shade"
+      - in: "(luuk|luugid)"
+        out: "shutter"
+      - in: "(aken|aknad)"
+        out: "window"
+  lock_states:
+    values:
+      - in: "(kinni|lukus|lukus(tatud))"
+        out: "locked"
+      - in: "(lahti|avatud|lukustamatta)"
+        out: "unlocked"
+
+expansion_rules:
+  name: "{name}"
+  area: "{area}[l|le|s]"
+  brightness: "{brightness}[%| protsent[i]]"
+  temperature: "{temperature}[ ]([°|kraadi][ ][{temperature_unit}])"
+  turn_on: "(lülita sisse|käivita|süüta|põlema|valgeks)"
+  turn_off: "(lülita välja|pane seisma|seiska|kustuta|pimedaks)"
+  set: "(tee|pane|aseta|säti|lülita|suurenda|vähenda|tõsta|langeta|lisa)"
+  close: "(sulge|lase alla|pane kinni)"
+  open: "(ava|tõsta [üles]|tee lahti)"
+
 skip_words:
   - "palun" # Please

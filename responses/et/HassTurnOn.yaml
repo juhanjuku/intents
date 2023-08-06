@@ -2,4 +2,5 @@ language: et
 responses:
   intents:
     HassTurnOn:
-      default: "Turned on {{ slots.name }}"
+      default: "{{ slots.name }} sisse lülitatud"
+      lights_area: "{{ slots.area }} valgus sisse lülitatud"

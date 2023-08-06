@@ -1,0 +1,8 @@
+language: et
+responses:
+  intents:
+    HassLightSet:
+      brightness: "{{ slots.name }} heledus on {{ slots.brightness }}"
+      brightness_area: "{{ slots.area }} heledus on {{ slots.brightness }}"
+      color: "{{ slots.name }} värv on {{ slots.color }}"
+      color_area: "{{ slots.area }} värv on {{ slots.color }}"
